@@ -1,0 +1,4 @@
+#!/usr/bin/env node
+
+var vertcore = require('../lib/cli/bitcore');
+vertcore();
