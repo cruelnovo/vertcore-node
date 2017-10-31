@@ -14,12 +14,12 @@ A node represents a collection of services that are loaded together. For more in
 
 ```js
 
-var index = require('bitcore-node');
+var index = require('vertcore-node');
 var Bitcoin = index.services.Bitcoin;
 var Node = index.Node;
 
 var configuration = {
-  datadir: '/home/user/.bitcoin',
+  datadir: '/home/user/.vertcoin',
   network: 'testnet',
   services: [
     {
@@ -37,7 +37,7 @@ node.start(function() {
 });
 
 node.on('ready', function() {
-  console.log('Bitcoin Node Ready');
+  console.log('Vertcoin Node Ready');
 });
 
 node.on('error', function(err) {

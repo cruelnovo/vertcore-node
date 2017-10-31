@@ -1,11 +1,11 @@
 # Services
-Bitcore Node has a service module system that can start up additional services that can include additional:
+Vertcore Node has a service module system that can start up additional services that can include additional:
 - Blockchain indexes (e.g. querying balances for addresses)
 - API methods
 - HTTP routes
 - Event types to publish and subscribe
 
-The `bitcore-node.json` file describes which services will load for a node:
+The `vertcore-node.json` file describes which services will load for a node:
 
 ```json
 {
@@ -20,27 +20,27 @@ Services correspond with a Node.js module as described in 'package.json', for ex
 ```json
 {
   "dependencies": {
-    "bitcore-lib": "^0.13.7",
-    "bitcore-node": "^0.2.0",
-    "insight-api": "^3.0.0"
+    "vertcore-lib": "^0.13.7",
+    "vertcore-node": "^0.2.0",
+    "insight-vtc-api": "^3.0.0"
   }
 }
 ```
 
-_Note:_ If you already have a bitcore-node database, and you want to query data from previous blocks in the blockchain, you will need to reindex. Reindexing right now means deleting your bitcore-node database and resyncing.
+_Note:_ If you already have a vertcore-node database, and you want to query data from previous blocks in the blockchain, you will need to reindex. Reindexing right now means deleting your vertcore-node database and resyncing.
 
 ## Using Services Programmatically
 If, instead, you would like to run a custom node, you can include services by including them in your configuration object when initializing a new node.
 
 ```js
-//Require bitcore
-var bitcore = require('bitcore-node');
+//Require vertcore
+var vertcore = require('vertcore-node');
 
 //Services
-var Bitcoin = bitcore.services.Bitcoin;
-var Web = bitcore.services.Web;
+var Bitcoin = vertcore.services.Bitcoin;
+var Web = vertcore.services.Web;
 
-var myNode = new bitcore.Node({
+var myNode = new vertcore.Node({
   network: 'regtest'
   services: [
     {
@@ -48,8 +48,8 @@ var myNode = new bitcore.Node({
       module: Bitcoin,
       config: {
         spawn: {
-          datadir: '/home/<username>/.bitcoin',
-          exec: '/home/<username>/bitcore-node/bin/bitcoind'
+          datadir: '/home/<username>/.vertcoin',
+          exec: '/home/<username>/vertcore-node/bin/vertcoind'
         }
       }
     },
@@ -82,7 +82,7 @@ A new service can be created by inheriting from `Node.Service` and implementing 
 - `Service.prototype.getPublishEvents()` - Describes which events can be subscribed to for this service, useful to subscribe to events over the included web socket API.
 - `Service.prototype.setupRoutes()` - A service can extend HTTP routes on an express application by implementing this method.
 
-The `package.json` for the service module can either export the `Node.Service` directly, or specify a specific module to load by including `"bitcoreNode": "lib/bitcore-node.js"`.
+The `package.json` for the service module can either export the `Node.Service` directly, or specify a specific module to load by including `"bitcoreNode": "lib/vertcore-node.js"`.
 
 Please take a look at some of the existing services for implementation specifics.
 

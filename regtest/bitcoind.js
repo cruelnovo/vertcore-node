@@ -7,7 +7,7 @@ var index = require('..');
 var log = index.log;
 
 var chai = require('chai');
-var bitcore = require('bitcore-lib');
+var bitcore = require('vertcore-lib');
 var BN = bitcore.crypto.BN;
 var async = require('async');
 var rimraf = require('rimraf');
@@ -26,7 +26,7 @@ var coinbasePrivateKey;
 var privateKey = bitcore.PrivateKey();
 var destKey = bitcore.PrivateKey();
 
-describe('Bitcoind Functionality', function() {
+describe('Vertcoind Functionality', function() {
 
   before(function(done) {
     this.timeout(60000);
@@ -46,7 +46,7 @@ describe('Bitcoind Functionality', function() {
       bitcoind = require('../').services.Bitcoin({
         spawn: {
           datadir: datadir,
-          exec: path.resolve(__dirname, '../bin/bitcoind')
+          exec: path.resolve(__dirname, '../bin/vertcoind')
         },
         node: {
           network: regtestNetwork,
@@ -60,10 +60,10 @@ describe('Bitcoind Functionality', function() {
         log.error('error="%s"', err.message);
       });
 
-      log.info('Waiting for Bitcoin Core to initialize...');
+      log.info('Waiting for Vertcoin Core to initialize...');
 
       bitcoind.start(function() {
-        log.info('Bitcoind started');
+        log.info('Vertcoind started');
 
         client = new BitcoinRPC({
           protocol: 'http',

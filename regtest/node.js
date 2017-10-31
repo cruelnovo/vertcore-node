@@ -9,7 +9,7 @@ var log = index.log;
 log.debug = function() {};
 
 var chai = require('chai');
-var bitcore = require('bitcore-lib');
+var bitcore = require('vertcore-lib');
 var rimraf = require('rimraf');
 var node;
 
@@ -53,7 +53,7 @@ describe('Node Functionality', function() {
             config: {
               spawn: {
                 datadir: datadir,
-                exec: path.resolve(__dirname, '../bin/bitcoind')
+                exec: path.resolve(__dirname, '../bin/vertcoind')
               }
             }
           }
@@ -78,7 +78,7 @@ describe('Node Functionality', function() {
           protocol: 'http',
           host: '127.0.0.1',
           port: 30331,
-          user: 'bitcoin',
+          user: 'vertcoin',
           pass: 'local321',
           rejectUnauthorized: false
         });

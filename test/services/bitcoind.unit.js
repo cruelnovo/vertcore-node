@@ -6,7 +6,7 @@ var path = require('path');
 var EventEmitter = require('events').EventEmitter;
 var should = require('chai').should();
 var crypto = require('crypto');
-var bitcore = require('bitcore-lib');
+var bitcore = require('vertcore-lib');
 var _ = bitcore.deps._;
 var sinon = require('sinon');
 var proxyquire = require('proxyquire');
@@ -26,7 +26,7 @@ var BitcoinService = proxyquire('../../lib/services/bitcoind', {
 });
 var defaultBitcoinConf = fs.readFileSync(path.resolve(__dirname, '../data/default.bitcoin.conf'), 'utf8');
 
-describe('Bitcoin Service', function() {
+describe('Vertcoin Service', function() {
   var txhex = '01000000010000000000000000000000000000000000000000000000000000000000000000ffffffff0704ffff001d0104ffffffff0100f2052a0100000043410496b538e853519c726a2c91e61ec11600ae1390813a627c66fb8be7947be63c52da7589379515d4e0a604f8141781e62294721166bf621e73a82cbf2342c858eeac00000000';
 
   var baseConfig = {
@@ -357,7 +357,7 @@ describe('Bitcoin Service', function() {
     afterEach(function() {
       sandbox.restore();
     });
-    it('will parse a bitcoin.conf file', function() {
+    it('will parse a vertcoin.conf file', function() {
       var TestBitcoin = proxyquire('../../lib/services/bitcoind', {
         fs: {
           readFileSync: readFileSync,
@@ -369,7 +369,7 @@ describe('Bitcoin Service', function() {
         }
       });
       var bitcoind = new TestBitcoin(baseConfig);
-      bitcoind.options.spawn.datadir = '/tmp/.bitcoin';
+      bitcoind.options.spawn.datadir = '/tmp/.vertcoin';
       var node = {};
       bitcoind._loadSpawnConfiguration(node);
       should.exist(bitcoind.spawn.config);
@@ -381,7 +381,7 @@ describe('Bitcoin Service', function() {
         port: 20000,
         rpcport: 50001,
         rpcallowip: '127.0.0.1',
-        rpcuser: 'bitcoin',
+        rpcuser: 'vertcoin',
         rpcpassword: 'local321',
         server: 1,
         spentindex: 1,
@@ -407,7 +407,7 @@ describe('Bitcoin Service', function() {
       var config = {
         node: {
           network: bitcore.Networks.testnet,
-          configPath: '/tmp/.bitcore/bitcore-node.json'
+          configPath: '/tmp/.vertcore/vertcore-node.json'
         },
         spawn: {
           datadir: './data',
@@ -418,7 +418,7 @@ describe('Bitcoin Service', function() {
       bitcoind.options.spawn.datadir = './data';
       var node = {};
       bitcoind._loadSpawnConfiguration(node);
-      bitcoind.options.spawn.datadir.should.equal('/tmp/.bitcore/data');
+      bitcoind.options.spawn.datadir.should.equal('/tmp/.vertcore/data');
     });
     it('should throw an exception if txindex isn\'t enabled in the configuration', function() {
       var TestBitcoin = proxyquire('../../lib/services/bitcoind', {
@@ -466,7 +466,7 @@ describe('Bitcoin Service', function() {
         }
       };
       var bitcoind = new TestBitcoin(config);
-      bitcoind.options.spawn.datadir = '/tmp/.bitcoin';
+      bitcoind.options.spawn.datadir = '/tmp/.vertcoin';
       var node = {};
       bitcoind._loadSpawnConfiguration(node);
     });
@@ -480,7 +480,7 @@ describe('Bitcoin Service', function() {
     afterEach(function() {
       sandbox.restore();
     });
-    it('should warn the user if reindex is set to 1 in the bitcoin.conf file', function() {
+    it('should warn the user if reindex is set to 1 in the vertcoin.conf file', function() {
       var bitcoind = new BitcoinService(baseConfig);
       var config = {
         txindex: 1,
@@ -829,7 +829,7 @@ describe('Bitcoin Service', function() {
         }
       };
       var bitcoind = new BitcoinService(config);
-      bitcoind._getNetworkConfigPath().should.equal('testnet3/bitcoin.conf');
+      bitcoind._getNetworkConfigPath().should.equal('testnet3/vertcoin.conf');
     });
     it('will get default rpc port for regtest', function() {
       bitcore.Networks.enableRegtest();
@@ -843,7 +843,7 @@ describe('Bitcoin Service', function() {
         }
       };
       var bitcoind = new BitcoinService(config);
-      bitcoind._getNetworkConfigPath().should.equal('regtest/bitcoin.conf');
+      bitcoind._getNetworkConfigPath().should.equal('regtest/vertcoin.conf');
     });
   });
 
@@ -1086,7 +1086,7 @@ describe('Bitcoin Service', function() {
   });
 
   describe('#_getAddressesFromTransaction', function() {
-    it('will get results using bitcore.Transaction', function() {
+    it('will get results using vertcore.Transaction', function() {
       var bitcoind = new BitcoinService(baseConfig);
       var wif = 'L2Gkw3kKJ6N24QcDuH4XDqt9cTqsKTVNDGz1CRZhk9cq4auDUbJy';
       var privkey = bitcore.PrivateKey.fromWIF(wif);
@@ -1749,11 +1749,11 @@ describe('Bitcoin Service', function() {
       bitcoind._loadSpawnConfiguration = sinon.stub();
       bitcoind.spawn = {};
       bitcoind.spawn.exec = 'testexec';
-      bitcoind.spawn.configPath = 'testdir/bitcoin.conf';
+      bitcoind.spawn.configPath = 'testdir/vertcoin.conf';
       bitcoind.spawn.datadir = 'testdir';
       bitcoind.spawn.config = {};
       bitcoind.spawn.config.rpcport = 20001;
-      bitcoind.spawn.config.rpcuser = 'bitcoin';
+      bitcoind.spawn.config.rpcuser = 'vertcoin';
       bitcoind.spawn.config.rpcpassword = 'password';
       bitcoind.spawn.config.zmqpubrawtx = 'tcp://127.0.0.1:30001';
 
@@ -1784,7 +1784,7 @@ describe('Bitcoin Service', function() {
         done();
       });
     });
-    it('will respawn bitcoind spawned process', function(done) {
+    it('will respawn vertcoind spawned process', function(done) {
       var process = new EventEmitter();
       var spawn = sinon.stub().returns(process);
       var TestBitcoinService = proxyquire('../../lib/services/bitcoind', {
@@ -1798,9 +1798,9 @@ describe('Bitcoin Service', function() {
       var bitcoind = new TestBitcoinService(baseConfig);
       bitcoind._loadSpawnConfiguration = sinon.stub();
       bitcoind.spawn = {};
-      bitcoind.spawn.exec = 'bitcoind';
-      bitcoind.spawn.datadir = '/tmp/bitcoin';
-      bitcoind.spawn.configPath = '/tmp/bitcoin/bitcoin.conf';
+      bitcoind.spawn.exec = 'vertcoind';
+      bitcoind.spawn.datadir = '/tmp/vertcoin';
+      bitcoind.spawn.configPath = '/tmp/vertcoin/vertcoin.conf';
       bitcoind.spawn.config = {};
       bitcoind.spawnRestartTime = 1;
       bitcoind._loadTipFromNode = sinon.stub().callsArg(1);
@@ -1836,9 +1836,9 @@ describe('Bitcoin Service', function() {
       var bitcoind = new TestBitcoinService(baseConfig);
       bitcoind._loadSpawnConfiguration = sinon.stub();
       bitcoind.spawn = {};
-      bitcoind.spawn.exec = 'bitcoind';
-      bitcoind.spawn.datadir = '/tmp/bitcoin';
-      bitcoind.spawn.configPath = '/tmp/bitcoin/bitcoin.conf';
+      bitcoind.spawn.exec = 'vertcoind';
+      bitcoind.spawn.datadir = '/tmp/vertcoin';
+      bitcoind.spawn.configPath = '/tmp/vertcoin/vertcoin.conf';
       bitcoind.spawn.config = {};
       bitcoind.spawnRestartTime = 1;
       bitcoind._loadTipFromNode = sinon.stub().callsArg(1);
@@ -1860,7 +1860,7 @@ describe('Bitcoin Service', function() {
         process.emit('exit', 1);
       });
     });
-    it('will NOT respawn bitcoind spawned process if shutting down', function(done) {
+    it('will NOT respawn vertcoind spawned process if shutting down', function(done) {
       var process = new EventEmitter();
       var spawn = sinon.stub().returns(process);
       var TestBitcoinService = proxyquire('../../lib/services/bitcoind', {
@@ -1883,9 +1883,9 @@ describe('Bitcoin Service', function() {
       var bitcoind = new TestBitcoinService(config);
       bitcoind._loadSpawnConfiguration = sinon.stub();
       bitcoind.spawn = {};
-      bitcoind.spawn.exec = 'bitcoind';
-      bitcoind.spawn.datadir = '/tmp/bitcoin';
-      bitcoind.spawn.configPath = '/tmp/bitcoin/bitcoin.conf';
+      bitcoind.spawn.exec = 'vertcoind';
+      bitcoind.spawn.datadir = '/tmp/vertcoin';
+      bitcoind.spawn.configPath = '/tmp/vertcoin/vertcoin.conf';
       bitcoind.spawn.config = {};
       bitcoind.spawnRestartTime = 1;
       bitcoind._loadTipFromNode = sinon.stub().callsArg(1);
@@ -1924,11 +1924,11 @@ describe('Bitcoin Service', function() {
       bitcoind._loadSpawnConfiguration = sinon.stub();
       bitcoind.spawn = {};
       bitcoind.spawn.exec = 'testexec';
-      bitcoind.spawn.configPath = 'testdir/bitcoin.conf';
+      bitcoind.spawn.configPath = 'testdir/vertcoin.conf';
       bitcoind.spawn.datadir = 'testdir';
       bitcoind.spawn.config = {};
       bitcoind.spawn.config.rpcport = 20001;
-      bitcoind.spawn.config.rpcuser = 'bitcoin';
+      bitcoind.spawn.config.rpcuser = 'vertcoin';
       bitcoind.spawn.config.rpcpassword = 'password';
       bitcoind.spawn.config.zmqpubrawtx = 'tcp://127.0.0.1:30001';
       bitcoind._loadTipFromNode = sinon.stub().callsArgWith(1, new Error('test'));
@@ -1954,11 +1954,11 @@ describe('Bitcoin Service', function() {
       bitcoind._loadSpawnConfiguration = sinon.stub();
       bitcoind.spawn = {};
       bitcoind.spawn.exec = 'testexec';
-      bitcoind.spawn.configPath = 'testdir/bitcoin.conf';
+      bitcoind.spawn.configPath = 'testdir/vertcoin.conf';
       bitcoind.spawn.datadir = 'testdir';
       bitcoind.spawn.config = {};
       bitcoind.spawn.config.rpcport = 20001;
-      bitcoind.spawn.config.rpcuser = 'bitcoin';
+      bitcoind.spawn.config.rpcuser = 'vertcoin';
       bitcoind.spawn.config.rpcpassword = 'password';
       bitcoind.spawn.config.zmqpubrawtx = 'tcp://127.0.0.1:30001';
 
@@ -2038,7 +2038,7 @@ describe('Bitcoin Service', function() {
       bitcoind.options = {};
       bitcoind.start(function(err) {
         err.should.be.instanceof(Error);
-        err.message.should.match(/Bitcoin configuration options/);
+        err.message.should.match(/Vertcoin configuration options/);
       });
       done();
     });
@@ -3315,7 +3315,7 @@ describe('Bitcoin Service', function() {
   });
 
   describe('#_getAddressStrings', function() {
-    it('will get address strings from bitcore addresses', function() {
+    it('will get address strings from vertcore addresses', function() {
       var addresses = [
         bitcore.Address('1AGNa15ZQXAZUgFiqJ2i7Z2DPU2J6hW62i'),
         bitcore.Address('3CMNFxN1oHBc4R1EpboAL5yzHGgE611Xou'),
@@ -3852,7 +3852,7 @@ describe('Bitcoin Service', function() {
         done();
       });
     });
-    it('will getblock as bitcore object from height', function(done) {
+    it('will getblock as vertcore object from height', function(done) {
       var bitcoind = new BitcoinService(baseConfig);
       var getBlock = sinon.stub().callsArgWith(2, null, {
         result: blockhex
@@ -3874,7 +3874,7 @@ describe('Bitcoin Service', function() {
         done();
       });
     });
-    it('will getblock as bitcore object', function(done) {
+    it('will getblock as vertcore object', function(done) {
       var bitcoind = new BitcoinService(baseConfig);
       var getBlock = sinon.stub().callsArgWith(2, null, {
         result: blockhex

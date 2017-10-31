@@ -2,7 +2,7 @@
 
 var should = require('chai').should();
 var sinon = require('sinon');
-var bitcore = require('bitcore-lib');
+var bitcore = require('vertcore-lib');
 var Networks = bitcore.Networks;
 var proxyquire = require('proxyquire');
 var util = require('util');
@@ -10,7 +10,7 @@ var BaseService = require('../lib/service');
 var index = require('../lib');
 var log = index.log;
 
-describe('Bitcore Node', function() {
+describe('Vertcore Node', function() {
 
   var baseConfig = {};
 

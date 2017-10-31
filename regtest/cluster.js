@@ -6,7 +6,7 @@ var spawn = require('child_process').spawn;
 
 var BitcoinRPC = require('bitcoind-rpc');
 var rimraf = require('rimraf');
-var bitcore = require('bitcore-lib');
+var bitcore = require('vertcore-lib');
 var chai = require('chai');
 var should = chai.should();
 
@@ -16,15 +16,15 @@ log.debug = function() {};
 var BitcoreNode = index.Node;
 var BitcoinService = index.services.Bitcoin;
 
-describe('Bitcoin Cluster', function() {
+describe('Vertcoin Cluster', function() {
   var node;
   var daemons = [];
-  var execPath = path.resolve(__dirname, '../bin/bitcoind');
+  var execPath = path.resolve(__dirname, '../bin/vertcoind');
   var nodesConf = [
     {
       datadir: path.resolve(__dirname, './data/node1'),
-      conf: path.resolve(__dirname, './data/node1/bitcoin.conf'),
-      rpcuser: 'bitcoin',
+      conf: path.resolve(__dirname, './data/node1/vertcoin.conf'),
+      rpcuser: 'vertcoin',
       rpcpassword: 'local321',
       rpcport: 30521,
       zmqpubrawtx: 'tcp://127.0.0.1:30611',
@@ -32,8 +32,8 @@ describe('Bitcoin Cluster', function() {
     },
     {
       datadir: path.resolve(__dirname, './data/node2'),
-      conf: path.resolve(__dirname, './data/node2/bitcoin.conf'),
-      rpcuser: 'bitcoin',
+      conf: path.resolve(__dirname, './data/node2/vertcoin.conf'),
+      rpcuser: 'vertcoin',
       rpcpassword: 'local321',
       rpcport: 30522,
       zmqpubrawtx: 'tcp://127.0.0.1:30622',
@@ -41,8 +41,8 @@ describe('Bitcoin Cluster', function() {
     },
     {
       datadir: path.resolve(__dirname, './data/node3'),
-      conf: path.resolve(__dirname, './data/node3/bitcoin.conf'),
-      rpcuser: 'bitcoin',
+      conf: path.resolve(__dirname, './data/node3/vertcoin.conf'),
+      rpcuser: 'vertcoin',
       rpcpassword: 'local321',
       rpcport: 30523,
       zmqpubrawtx: 'tcp://127.0.0.1:30633',
@@ -51,7 +51,7 @@ describe('Bitcoin Cluster', function() {
   ];
 
   before(function(done) {
-    log.info('Starting 3 bitcoind daemons');
+    log.info('Starting 3 vertcoind daemons');
     this.timeout(60000);
     async.each(nodesConf, function(nodeConf, next) {
       var opts = [
@@ -96,7 +96,7 @@ describe('Bitcoin Cluster', function() {
     }, 1000);
   });
 
-  it('step 1: will connect to three bitcoind daemons', function(done) {
+  it('step 1: will connect to three vertcoind daemons', function(done) {
     this.timeout(20000);
     var configuration = {
       network: 'regtest',
@@ -109,21 +109,21 @@ describe('Bitcoin Cluster', function() {
               {
                 rpchost: '127.0.0.1',
                 rpcport: 30521,
-                rpcuser: 'bitcoin',
+                rpcuser: 'vertcoin',
                 rpcpassword: 'local321',
                 zmqpubrawtx: 'tcp://127.0.0.1:30611'
               },
               {
                 rpchost: '127.0.0.1',
                 rpcport: 30522,
-                rpcuser: 'bitcoin',
+                rpcuser: 'vertcoin',
                 rpcpassword: 'local321',
                 zmqpubrawtx: 'tcp://127.0.0.1:30622'
               },
               {
                 rpchost: '127.0.0.1',
                 rpcport: 30523,
-                rpcuser: 'bitcoin',
+                rpcuser: 'vertcoin',
                 rpcpassword: 'local321',
                 zmqpubrawtx: 'tcp://127.0.0.1:30633'
               }

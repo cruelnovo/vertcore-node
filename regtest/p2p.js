@@ -6,11 +6,11 @@ var path = require('path');
 var index = require('..');
 var log = index.log;
 
-var p2p = require('bitcore-p2p');
+var p2p = require('vertcore-p2p');
 var Peer = p2p.Peer;
 var Messages = p2p.Messages;
 var chai = require('chai');
-var bitcore = require('bitcore-lib');
+var bitcore = require('vertcore-lib');
 var Transaction = bitcore.Transaction;
 var BN = bitcore.crypto.BN;
 var async = require('async');
@@ -52,7 +52,7 @@ describe('P2P Functionality', function() {
       bitcoind = require('../').services.Bitcoin({
         spawn: {
           datadir: datadir,
-          exec: path.resolve(__dirname, '../bin/bitcoind')
+          exec: path.resolve(__dirname, '../bin/vertcoind')
         },
         node: {
           network: bitcore.Networks.testnet
@@ -63,19 +63,19 @@ describe('P2P Functionality', function() {
         log.error('error="%s"', err.message);
       });
 
-      log.info('Waiting for Bitcoin Core to initialize...');
+      log.info('Waiting for Vertcoin Core to initialize...');
 
       bitcoind.start(function(err) {
         if (err) {
           throw err;
         }
-        log.info('Bitcoind started');
+        log.info('Vertcoind started');
 
         client = new BitcoinRPC({
           protocol: 'http',
           host: '127.0.0.1',
           port: 30331,
-          user: 'bitcoin',
+          user: 'vertcoin',
           pass: 'local321',
           rejectUnauthorized: false
         });
