@@ -5,7 +5,7 @@ set -e
 root_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/.."
 platform=`uname -a | awk '{print tolower($1)}'`
 arch=`uname -m`
-version="0.11.1.0"
+version="v0.11.1.0"
 url="https://github.com/vertcoin/vertcoin/releases/download"
 tag="v0.11.1.0"
 
@@ -49,7 +49,7 @@ download_bitcoind() {
         fi
         if test -e "${tarball_name}"; then
             echo "Unpacking vertcoin distribution"
-            unzip $tarball_name -d ${tag}
+            unzip -o $tarball_name -d ${tag}
             if test $? -eq 0; then
                 ln -sf "${tag}/vertcoind"
                 return;
