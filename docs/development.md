@@ -114,8 +114,8 @@ Edit `vertcore-node.json` with something similar to:
   "services": [
     "vertcoind",
     "web",
-    "insight-api",
-    "insight-ui",
+    "insight-vtc-api",
+    "insight-vtc-ui",
     "<additional_service>"
   ],
   "servicesConfig": {
@@ -129,7 +129,7 @@ Edit `vertcore-node.json` with something similar to:
 }
 ```
 
-**Note**: To install services [insight-api](https://github.com/Cubey2019/insight-vtc-api) and [insight-ui](https://github.com/Cubey2019/insight-vtc-ui) you'll need to clone the repositories locally.
+**Note**: To install services [insight-vtc-api](https://github.com/Cubey2019/insight-vtc-api) and [insight-vtc-ui](https://github.com/Cubey2019/insight-vtc-ui) you'll need to clone the repositories locally.
 
 Setup symlinks for all of the services and dependencies:
 
@@ -137,8 +137,8 @@ Setup symlinks for all of the services and dependencies:
 cd node_modules
 ln -s ~/vertcore-lib
 ln -s ~/vertcore-node
-ln -s ~/insight-api
-ln -s ~/insight-ui
+ln -s ~/insight-vtc-api
+ln -s ~/insight-vtc-ui
 ```
 
 Make sure that the `<datadir>/vertcoin.conf` has the necessary settings, for example:
