@@ -7,7 +7,7 @@ var expect = chai.expect;
 var DBService = require('../../../lib/services/db');
 var sinon = require('sinon');
 var Levelup = require('levelup');
-var Tx = require('bcoin').tx;
+var Tx = require('vcoin').tx;
 
 describe('DB', function() {
 

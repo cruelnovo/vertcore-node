@@ -1,9 +1,9 @@
 'use strict';
 
 var should = require('chai').should();
-var bcoin = require('bcoin');
-var Tx = bcoin.tx;
-var Block = bcoin.block;
+var vcoin = require('vcoin');
+var Tx = vcoin.tx;
+var Block = vcoin.block;
 var sinon = require('sinon');
 var TxService = require('../../../lib/services/transaction');
 var Encoding  = require('../../../lib/services/transaction/encoding');

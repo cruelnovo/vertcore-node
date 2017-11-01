@@ -4,9 +4,9 @@ var expect = require('chai').expect;
 var MempoolService = require('../../../lib/services/mempool');
 var sinon = require('sinon');
 var Encoding  = require('../../../lib/services/mempool/encoding');
-var bcoin = require('bcoin');
-var Tx = bcoin.tx;
-var Block = bcoin.block;
+var vcoin = require('vcoin');
+var Tx = vcoin.tx;
+var Block = vcoin.block;
 
 describe('Mempool Service', function() {
 

@@ -14,7 +14,7 @@ npm install
 ./bin/vertcore-node start
 ```
 
-Note: A default configuration file is placed in the vertcore user's home directory (~/.vertcore/vertcore-node.json). Or, alternatively, you can copy the provided "vertcore-node.json.sample" file to the project's root directory as vertcore-node.json and edit it for your preferences. If you don't have a preferred block source (trusted peer), [Bcoin](https://github.com/bcoin-org/bcoin) will be started automatically and synchronized with the mainnet chain.
+Note: A default configuration file is placed in the vertcore user's home directory (~/.vertcore/vertcore-node.json). Or, alternatively, you can copy the provided "vertcore-node.json.sample" file to the project's root directory as vertcore-node.json and edit it for your preferences. If you don't have a preferred block source (trusted peer), [Vcoin](https://github.com/Cubey2019/vcoin) will be started automatically and synchronized with the mainnet chain.
 
 ## Prerequisites
 

@@ -2,12 +2,12 @@
 
 var sinon = require('sinon');
 var AddressService = require('../../../lib/services/address');
-var Tx = require('bcoin').tx;
+var Tx = require('vcoin').tx;
 var expect = require('chai').expect;
 var Encoding  = require('../../../lib/services/address/encoding');
 var Readable = require('stream').Readable;
 var EventEmitter = require('events').EventEmitter;
-var bcoin = require('bcoin');
+var vcoin = require('vcoin');
 
 describe('Address Service', function() {
 
@@ -214,8 +214,8 @@ describe('Address Service', function() {
 
     it('should reorg when there is nothing to reorg', function(done ) {
 
-      var commonAncestorHeader = bcoin.block.fromRaw(blocks[5], 'hex').toHeaders().toJSON();
-      var block = bcoin.block.fromRaw(blocks[6], 'hex');
+      var commonAncestorHeader = vcoin.block.fromRaw(blocks[5], 'hex').toHeaders().toJSON();
+      var block = vcoin.block.fromRaw(blocks[6], 'hex');
       block.__ts = 55555;
       block.__height = 999;
       var oldBlocks = [block];

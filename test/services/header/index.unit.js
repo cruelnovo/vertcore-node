@@ -10,7 +10,7 @@ var utils = require('../../../lib/utils');
 var Block = require('vertcore-lib').Block;
 var BN = require('bn.js');
 var Emitter = require('events').EventEmitter;
-var bcoin = require('bcoin');
+var vcoin = require('vcoin');
 
 describe('Header Service', function() {
 
