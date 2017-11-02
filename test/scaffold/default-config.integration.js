@@ -58,8 +58,8 @@ describe('#defaultConfig', function() {
       services: [
         'bitcoind',
         'web',
-        'insight-api',
-        'insight-ui'
+        'insight-vtc-api',
+        'insight-vtc-ui'
       ],
       servicesConfig: {
         bitcoind: {
@@ -87,7 +87,7 @@ describe('#defaultConfig', function() {
     });
     var home = process.env.HOME;
     var info = defaultConfig({
-      additionalServices: ['insight-api', 'insight-ui']
+      additionalServices: ['insight-vtc-api', 'insight-vtc-ui']
     });
     info.path.should.equal(home + '/.vertcore');
     info.config.network.should.equal('livenet');
@@ -95,8 +95,8 @@ describe('#defaultConfig', function() {
     info.config.services.should.deep.equal([
       'bitcoind',
       'web',
-      'insight-api',
-      'insight-ui'
+      'insight-vtc-api',
+      'insight-vtc-ui'
     ]);
     var bitcoind = info.config.servicesConfig.bitcoind;
     should.exist(bitcoind);
