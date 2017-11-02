@@ -12,11 +12,11 @@
     "transaction",
     "timestamp",
     "fee",
-    "insight-api",
+    "insight-vtc-api",
     "web"
   ],
   "servicesConfig": {
-    "insight-api": {
+    "insight-vtc-api": {
       "routePrefix": "api",
       "disableRateLimiter": true,
       "enableCache": true

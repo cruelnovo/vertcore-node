@@ -22,7 +22,7 @@ Services correspond with a Node.js module as described in 'package.json', for ex
   "dependencies": {
     "vertcore-lib": "^0.13.7",
     "vertcore-node": "^0.2.0",
-    "insight-api": "^3.0.0"
+    "insight-vtc-api": "^3.0.0"
   }
 }
 ```
