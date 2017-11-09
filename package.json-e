@@ -1,38 +1,38 @@
 {
-  "name": "vertcore-node",
-  "description": "Full node with extended capabilities using Vertcore and Vertcoin Core",
+  "name": "bitcore-node",
+  "description": "Full node with extended capabilities using Bitcore and Bitcoin Core",
   "engines": {
     "node": ">=8.0.0"
   },
   "author": "BitPay <dev@bitpay.com>",
-  "version": "5.0.0-beta.39",
+  "version": "5.0.0-beta.36",
   "main": "./index.js",
-  "repository": "git://github.com/Cubey2019/vertcore-node.git",
-  "homepage": "https://github.com/Cubey2019/vertcore-node",
+  "repository": "git://github.com/bitpay/bitcore-node.git",
+  "homepage": "https://github.com/bitpay/bitcore-node",
   "bugs": {
-    "url": "https://github.com/Cubey2019/vertcore-node/issues"
+    "url": "https://github.com/bitpay/bitcore-node/issues"
   },
   "bin": {
-    "vertcore-node": "./bin/vertcore-node"
+    "bitcore-node": "./bin/bitcore-node"
   },
   "scripts": {
     "test": "NODE_ENV=test mocha -R spec --recursive test"
   },
   "tags": [
-    "vertcoin",
-    "vertcoind",
-    "vcoin",
-    "vertcoin full node",
-    "vertcoin index",
+    "bitcoin",
+    "bitcoind",
+    "bcoin",
+    "bitcoin full node",
+    "bitcoin index",
     "block explorer",
     "wallet backend"
   ],
   "dependencies": {
     "async": "^2.5.0",
-    "vcoin": "Cubey2019/vcoin",
+    "bcoin": "bitpay/bcoin#v1.0.0-beta.14+cash",
     "bitcoind-rpc": "^0.6.0",
-    "vertcore-lib": "5.0.0-beta.1",
-    "vertcore-p2p": "5.0.0-beta.1",
+    "bitcore-lib": "5.0.0-beta.1",
+    "bitcore-p2p": "5.0.0-beta.1",
     "bn.js": "^4.11.8",
     "body-parser": "^1.13.3",
     "colors": "^1.1.2",
