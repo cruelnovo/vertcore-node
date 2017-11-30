@@ -111,11 +111,11 @@ describe('Address Service', function() {
       var results = { items: [_tx] };
 
       sandbox.stub(addressService, 'getAddressHistory').callsArgWith(2, null, results);
-      addressService.getAddressSummary('1JoSiR4dBcSrGs2AZBP2gCHqCCsgzccsGb', {}, function(err, res) {
+      addressService.getAddressSummary('VsoGd8E5bRM4LdvKHy2f76cgt2AfUdxgxe', {}, function(err, res) {
         if (err) {
           return done(err);
         }
-        expect(res).to.deep.equal({ addrStr: '1JoSiR4dBcSrGs2AZBP2gCHqCCsgzccsGb',
+        expect(res).to.deep.equal({ addrStr: 'VsoGd8E5bRM4LdvKHy2f76cgt2AfUdxgxe',
           balance: 0.005,
           balanceSat: 500000,
           totalReceived: 0.005,
