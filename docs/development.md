@@ -129,7 +129,7 @@ Edit `vertcore-node.json` with something similar to:
 }
 ```
 
-**Note**: To install services [insight-vtc-api](https://github.com/Cubey2019/insight-vtc-api) and [insight-vtc-ui](https://github.com/Cubey2019/insight-vtc-ui) you'll need to clone the repositories locally.
+**Note**: To install services [insight-vtc-api](https://github.com/vertcoin-project/insight-vtc-api) and [insight-vtc-ui](https://github.com/vertcoin-project/insight-vtc-ui) you'll need to clone the repositories locally.
 
 Setup symlinks for all of the services and dependencies:
 

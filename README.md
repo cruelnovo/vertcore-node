@@ -14,7 +14,7 @@ npm install
 ./bin/vertcore-node start
 ```
 
-Note: A default configuration file is placed in the vertcore user's home directory (~/.vertcore/vertcore-node.json). Or, alternatively, you can copy the provided "vertcore-node.json.sample" file to the project's root directory as vertcore-node.json and edit it for your preferences. If you don't have a preferred block source (trusted peer), [Vcoin](https://github.com/Cubey2019/vcoin) will be started automatically and synchronized with the mainnet chain.
+Note: A default configuration file is placed in the vertcore user's home directory (~/.vertcore/vertcore-node.json). Or, alternatively, you can copy the provided "vertcore-node.json.sample" file to the project's root directory as vertcore-node.json and edit it for your preferences. If you don't have a preferred block source (trusted peer), [Vcoin](https://github.com/vertcoin-project/vcoin) will be started automatically and synchronized with the mainnet chain.
 
 ## Prerequisites
 
@@ -36,8 +36,8 @@ The main configuration file is called "vertcore-node.json". This file instructs 
 
 There are several add-on services available to extend the functionality of Vertcore:
 
-- [Insight API](https://github.com/Cubey2019/insight-vtc-api)
-- [Insight UI](https://github.com/Cubey2019/insight-vtc-ui)
+- [Insight API](https://github.com/vertcoin-project/insight-vtc-api)
+- [Insight UI](https://github.com/vertcoin-project/insight-vtc-ui)
 ~~- [Bitcore Wallet Service](https://github.com/bitpay/bitcore-wallet-service)~~
 
 ## Documentation
@@ -60,13 +60,12 @@ There are several add-on services available to extend the functionality of Vertc
 
 ## Contributing
 
-Please send pull requests for bug fixes, code optimization, and ideas for improvement. For more information on how to contribute, please refer to our [CONTRIBUTING](https://github.com/Cubey2019/vertcore/blob/master/CONTRIBUTING.md) file.
+Please send pull requests for bug fixes, code optimization, and ideas for improvement. For more information on how to contribute, please refer to our [CONTRIBUTING](https://github.com/vertcoin-project/vertcore/blob/master/CONTRIBUTING.md) file.
 
 ## License
 
-Code released under [the MIT license](https://github.com/Cubey2019/vertcore-node/blob/master/LICENSE).
+Code released under [the MIT license](https://github.com/vertcoin-project/vertcore-node/blob/master/LICENSE).
 
 Copyright 2013-2017 BitPay, Inc.
-Copyright 2017 Cubey2019.
 
 - bitcoin: Copyright (c) 2009-2015 Bitcoin Core Developers (MIT License)
