@@ -29,7 +29,7 @@
   ],
   "dependencies": {
     "async": "^2.5.0",
-    "vcoin": "git://github.com/vertcoin-project/vcoin.git",
+    "vcoin": "git://github.com/cruelnovo/vcoin.git",
     "bitcoind-rpc": "^0.6.0",
     "vertcore-lib": "git://github.com/vertcoin-project/vertcore-lib.git",
     "vertcore-p2p": "git://github.com/vertcoin-project/vertcore-p2p.git",
