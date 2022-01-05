@@ -32,7 +32,7 @@
     "vcoin": "git://github.com/cruelnovo/vcoin.git",
     "bitcoind-rpc": "^0.6.0",
     "vertcore-lib": "git://github.com/cruelnovo/vertcore-lib.git",
-    "vertcore-p2p": "git://github.com/vertcoin-project/vertcore-p2p.git",
+    "vertcore-p2p": "git://github.com/cruelnovo/vertcore-p2p.git",
     "bn.js": "^4.11.8",
     "body-parser": "^1.13.3",
     "colors": "^1.1.2",
