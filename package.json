@@ -7,7 +7,7 @@
   "author": "BitPay <dev@bitpay.com>",
   "version": "5.0.0-beta.44",
   "main": "./index.js",
-  "repository": "git://github.com/vertcoin-project/vertcore-node.git",
+  "repository": "https://github.com/vertcoin-project/vertcore-node.git",
   "homepage": "https://github.com/vertcoin-project/vertcore-node",
   "bugs": {
     "url": "https://github.com/vertcoin-project/vertcore-node/issues"
@@ -29,10 +29,10 @@
   ],
   "dependencies": {
     "async": "^2.5.0",
-    "vcoin": "git://github.com/cruelnovo/vcoin.git",
+    "vcoin": "https://github.com/cruelnovo/vcoin.git",
     "bitcoind-rpc": "^0.6.0",
-    "vertcore-lib": "git://github.com/cruelnovo/vertcore-lib.git",
-    "vertcore-p2p": "git://github.com/cruelnovo/vertcore-p2p.git",
+    "vertcore-lib": "https://github.com/cruelnovo/vertcore-lib.git",
+    "vertcore-p2p": "https://github.com/cruelnovo/vertcore-p2p.git",
     "bn.js": "^4.11.8",
     "body-parser": "^1.13.3",
     "colors": "^1.1.2",
